@@ -1,0 +1,913 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shafiq is a programmer, designer, and repair expert offering web design, graphics, app development, and device flashing/repair services.">
+  <title>Shafiq Â· code Â· design Â· repair</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Google Font: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #f9fbfc;  /* soft white-blue background */
+      color: #1e2f3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* -- color palette: white, blue, gray -- */
+    :root {
+      --white: #ffffff;
+      --off-white: #f5f9ff;
+      --blue-primary: #1a5f9e;
+      --blue-dark: #0e3a60;
+      --blue-light: #e3f0ff;
+      --gray-light: #eef2f6;
+      --gray-medium: #5e6f7e;
+      --gray-dark: #2c3f4f;
+    }
+
+    /* navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid #dae2ec;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo span {
+      font-weight: 300;
+      color: var(--gray-medium);
+      background: none;
+      -webkit-text-fill-color: var(--gray-medium);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-dark);
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue-primary);
+    }
+
+    /* buttons */
+    .btn {
+      display: inline-block;
+      background: var(--blue-primary);
+      color: white;
+      padding: 12px 34px;
+      border-radius: 100px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(26, 95, 158, 0.2);
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+
+    .btn:hover {
+      background: var(--blue-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 25px rgba(14, 58, 96, 0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--blue-primary);
+      color: var(--blue-primary);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      border-color: var(--blue-dark);
+    }
+
+    /* hero */
+    .hero {
+      padding: 50px 0 40px;
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1 1 350px;
+    }
+
+    .hero-badge {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      padding: 6px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-block;
+      margin-bottom: 20px;
+      border: 1px solid rgba(26,95,158,0.2);
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--gray-dark);
+      margin-bottom: 20px;
+    }
+
+    .hero-highlight {
+      color: var(--blue-primary);
+      border-bottom: 3px solid var(--blue-light);
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--gray-medium);
+      max-width: 550px;
+      margin-bottom: 32px;
+    }
+
+    /* hero image */
+    .hero-image {
+      flex: 1 1 300px;
+      background: var(--white);
+      border-radius: 28px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 30px 30px 50px rgba(26, 95, 158, 0.08);
+      border: 2px solid white;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 0 20px 25px rgba(0,0,0,0.05);
+    }
+
+    .gallery-section {
+      margin: 60px 0 80px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(26, 95, 158, 0.12);
+      transition: 0.3s ease;
+      aspect-ratio: 4 / 5;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(26, 95, 158, 0.18);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(14, 58, 96, 0.9), transparent);
+      color: white;
+      padding: 18px 14px 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #25D366;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 100px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);
+      margin-left: 15px;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 22px rgba(37, 211, 102, 0.28);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 200;
+      background: #25D366;
+      color: white;
+      border-radius: 50px;
+      padding: 14px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      box-shadow: 0 18px 35px rgba(37, 211, 102, 0.25);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .whatsapp-float:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 22px 40px rgba(37, 211, 102, 0.3);
+    }
+
+    .inquiry-section {
+      background: var(--off-white);
+      border-radius: 40px;
+      padding: 48px 40px;
+      margin: 60px 0;
+      border: 1px solid var(--gray-light);
+      box-shadow: 0 18px 35px rgba(0, 50, 90, 0.05);
+    }
+
+    .inquiry-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .inquiry-text {
+      flex: 1 1 260px;
+      min-width: 260px;
+    }
+
+    .inquiry-text h2 {
+      font-size: 2.4rem;
+      margin-bottom: 18px;
+      color: var(--blue-dark);
+    }
+
+    .inquiry-text p {
+      color: var(--gray-medium);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .inquiry-form {
+      flex: 1 1 420px;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .inquiry-form input,
+    .inquiry-form textarea {
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid #d8e2ec;
+      background: white;
+      color: var(--gray-dark);
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .inquiry-form textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .inquiry-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .inquiry-actions .btn,
+    .inquiry-actions .btn-whatsapp {
+      width: auto;
+      min-width: 180px;
+    }
+
+    .inquiry-note {
+      font-size: 0.95rem;
+      color: var(--gray-medium);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .hero-grid,
+      .inquiry-grid,
+      .contact-flex {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-content,
+      .hero-image,
+      .inquiry-text,
+      .inquiry-form,
+      .contact-info,
+      .contact-img {
+        flex: 1 1 auto;
+        min-width: auto;
+      }
+
+      .btn-whatsapp {
+        margin-left: 0;
+      }
+
+      .hero-content a {
+        margin-bottom: 12px;
+      }
+
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+      }
+    }
+
+    /* section titles */
+    .section-title {
+      text-align: center;
+      margin: 70px 0 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--gray-dark);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: var(--blue-primary);
+      margin: 15px auto 0;
+      border-radius: 4px;
+    }
+
+    .section-title p {
+      color: var(--gray-medium);
+      font-size: 1.2rem;
+      margin-top: 15px;
+    }
+
+    /* cards grid */
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 30px;
+      padding: 30px 25px;
+      flex: 1 1 200px;
+      max-width: 280px;
+      box-shadow: 0 20px 30px rgba(0, 50, 90, 0.03);
+      transition: 0.25s ease;
+      border: 1px solid rgba(26, 95, 158, 0.1);
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--blue-primary);
+      box-shadow: 0 30px 40px rgba(26, 95, 158, 0.1);
+    }
+
+    .card-img {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: none;
+    }
+
+    .service-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      color: var(--blue-dark);
+    }
+
+    .service-card p {
+      color: var(--gray-medium);
+      font-size: 0.95rem;
+    }
+
+    /* about + stats */
+    .about-section {
+      background: var(--white);
+      border-radius: 50px;
+      margin: 60px 0;
+      padding: 50px 40px;
+      box-shadow: 0 15px 25px rgba(26, 95, 158, 0.03);
+      border: 1px solid var(--gray-light);
+    }
+
+    .about-flex {
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 2 1 300px;
+    }
+
+    .about-text h3 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gray-dark);
+    }
+
+    .about-text h3 i {
+      color: var(--blue-primary);
+      margin-right: 12px;
+    }
+
+    .about-text p {
+      font-size: 1.15rem;
+      color: var(--gray-medium);
+      margin: 25px 0;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .skill-tag {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      padding: 8px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid rgba(26,95,158,0.2);
+    }
+
+    .about-image {
+      flex: 1 1 250px;
+      text-align: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 30px 70px 30px 70px;
+      box-shadow: 30px 30px 0 var(--blue-light);
+    }
+
+    /* specialities: flashing & design & app dev */
+    .specialities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      background: var(--off-white);
+      border-radius: 60px;
+      padding: 50px 40px;
+      margin: 50px 0;
+      border: 1px solid var(--gray-light);
+    }
+
+    .speciality-item {
+      flex: 1 1 220px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      background: var(--white);
+      padding: 25px;
+      border-radius: 40px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+    }
+
+    .speciality-item img {
+      width: 55px;
+      height: 55px;
+      filter: invert(27%) sepia(78%) saturate(747%) hue-rotate(173deg) brightness(92%) contrast(90%);
+    }
+
+    .speciality-text h4 {
+      font-size: 1.4rem;
+      color: var(--blue-dark);
+    }
+
+    .speciality-text p {
+      color: var(--gray-medium);
+    }
+
+    /* contact & social */
+    .contact-wrap {
+      background: var(--blue-dark);
+      color: white;
+      border-radius: 60px 60px 0 0;
+      padding: 60px 40px 40px;
+      margin-top: 70px;
+    }
+
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .contact-info h4 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    .contact-info p {
+      font-size: 1.2rem;
+      margin: 15px 0;
+    }
+
+    .contact-info i {
+      width: 40px;
+      color: var(--blue-light);
+    }
+
+    .social-links a {
+      color: white;
+      background: #255f8d;
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+      transition: 0.2s;
+      font-size: 1.6rem;
+    }
+
+    .social-links a:hover {
+      background: white;
+      color: var(--blue-dark);
+      transform: scale(1.1);
+    }
+
+    .contact-img {
+      max-width: 200px;
+    }
+    .contact-img img {
+      width: 100%;
+      border-radius: 100px;
+      border: 4px solid white;
+    }
+
+    hr {
+      border: 0.5px solid #4282b0;
+      margin: 40px 0 20px;
+    }
+
+    .copyright {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      color: #c7e0ff;
+    }
+
+    /* images (placeholders, all from unsplash / free) */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo">shafiq<span> .dev</span></div>
+      <div class="nav-links">
+        <a href="#">home</a>
+        <a href="#services">services</a>
+        <a href="#about">about</a>
+        <a href="#inquiries">inquiries</a>
+        <a href="#contact">contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- HERO with image (Shafiq) -->
+    <section class="hero" id="home">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="fas fa-crown" style="color:#1a5f9e;"></i> programmer & creative</span>
+          <h1>hi, i'm <span class="hero-highlight">Shafiq</span><br>code · design · repair</h1>
+          <p><i class="fas fa-check-circle" style="color:#1a5f9e;"></i> website design · graphics · app dev · phone/laptop flashing & repair</p>
+          <a href="#contact" class="btn"><i class="fas fa-comment"></i> work with me</a>
+          <a href="#services" class="btn btn-outline" style="margin-left:15px;"><i class="fas fa-arrow-down"></i> explore</a>
+          <a href="https://wa.me/256791961348" class="btn-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+        <div class="hero-image">
+          <!-- programmer / designer vibe image -->
+          <img src="images/image%207.png" alt="Shafiq coding workspace">
+        </div>
+      </div>
+    </section>
+
+    <!-- Device showcase gallery -->
+    <div class="gallery-section">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="images/smartphone.jpg" alt="opened smartphone">
+          <div class="gallery-label">Smartphone Repair</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/app-dev.jpg" alt="mobile app development">
+          <div class="gallery-label">Mobile App Dev</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/laptop-coding.jpg" alt="laptop coding">
+          <div class="gallery-label">Web Development</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/app-dev.jpg" alt="coding screen">
+          <div class="gallery-label">Coding Screen</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/app-dev.jpg" alt="programming workspace">
+          <div class="gallery-label">Programming</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES section (cards with icons as images) -->
+    <div class="section-title" id="services">
+      <h2>what i do</h2>
+      <p>five areas Â· one mission: quality</p>
+    </div>
+
+    <div class="cards-grid">
+      <!-- web design card -->
+      <div class="service-card">
+        <div class="card-img"><img src="images/web-design.jpg" alt="web design workspace"></div>
+        <h3>web design</h3>
+        <p>responsive, modern, fast websites that convert.</p>
+      </div>
+      <!-- graphics design -->
+      <div class="service-card">
+        <div class="card-img"><img src="images/web-design.jpg" alt="graphics design"></div>
+        <h3>graphics</h3>
+        <p>branding, social media visuals, logos & more.</p>
+      </div>
+      <!-- app development -->
+      <div class="service-card">
+        <div class="card-img"><img src="images/app-dev.jpg" alt="app development"></div>
+        <h3>app dev</h3>
+        <p>cross platform apps, clean UI + robust backend.</p>
+      </div>
+      <!-- phone flashing -->
+      <div class="service-card">
+        <div class="card-img"><img src="images/smartphone.jpg" alt="smartphone repair"></div>
+        <h3>phone flash</h3>
+        <p>FRP, firmware, unlock, dead recovery.</p>
+      </div>
+      <!-- laptop repair -->
+      <div class="service-card">
+        <div class="card-img"><img src="images/app-dev.jpg" alt="laptop repair"></div>
+        <h3>laptop repair</h3>
+        <p>hardware fix, ssd, screen, bios flashing.</p>
+      </div>
+    </div>
+
+    <!-- ABOUT me (with image and stats) -->
+    <div class="about-section" id="about">
+      <div class="about-flex">
+        <div class="about-text">
+          <h3><i class="fas fa-user-astronaut"></i> Shafiq, at your service</h3>
+          <p>I'm a programmer with a passion for both digital creativity and hardware fixing. Over the past years Iâ€™ve designed websites, built mobile apps, repaired hundreds of phones/laptops, and created graphics that speak.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">web dev</span>
+            <span class="skill-tag">graphics</span>
+            <span class="skill-tag">app dev</span>
+            <span class="skill-tag">flashing</span>
+            <span class="skill-tag">hardware</span>
+          </div>
+          <p><i class="fas fa-quote-left" style="color: var(--blue-primary);"></i> I believe in clean code, sharp design, and giving devices a second life.</p>
+        </div>
+        <div class="about-image">
+          <img src="images/image%207.png" alt="Shafiq">
+        </div>
+      </div>
+    </div>
+
+    <!-- FLASHING + GRAPHICS + APP extra (specialities) -->
+    <div class="specialities-grid">
+      <div class="speciality-item">
+        <i class="fas fa-palette" style="color: var(--blue-primary); font-size: 2.4rem;"></i>
+        <div class="speciality-text">
+          <h4>graphics & web</h4>
+          <p>logos, banners, full sites</p>
+        </div>
+      </div>
+      <div class="speciality-item">
+        <i class="fas fa-mobile-alt" style="color: var(--blue-primary); font-size: 2.4rem;"></i>
+        <div class="speciality-text">
+          <h4>app development</h4>
+          <p>iOS/Android, Flutter, React</p>
+        </div>
+      </div>
+      <div class="speciality-item">
+        <i class="fas fa-bolt" style="color: var(--blue-primary); font-size: 2.4rem;"></i>
+        <div class="speciality-text">
+          <h4>flashing & unlock</h4>
+          <p>all brands, bootloop fix</p>
+        </div>
+      </div>
+      <div class="speciality-item">
+        <i class="fas fa-toolbox" style="color: var(--blue-primary); font-size: 2.4rem;"></i>
+        <div class="speciality-text">
+          <h4>laptop repair</h4>
+          <p>hardware & software</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- INQUIRIES section -->
+    <section class="inquiry-section" id="inquiries">
+      <div class="inquiry-grid">
+        <div class="inquiry-text">
+          <h2>FOR INQUIRIES</h2>
+          <p>Send your request directly to my email or WhatsApp. Fill in the details below and choose the way you want to reach me.</p>
+          <p class="inquiry-note">Note: your message will open in your email client or WhatsApp chat so I receive it instantly.</p>
+        </div>
+        <div class="inquiry-form">
+          <input id="inq-name" type="text" placeholder="Your name" />
+          <input id="inq-contact" type="text" placeholder="Email or WhatsApp number" />
+          <textarea id="inq-message" placeholder="What do you need help with?"></textarea>
+          <div class="inquiry-actions">
+            <button type="button" class="btn" onclick="submitInquiry('email')"><i class="fas fa-envelope"></i> Send via Email</button>
+            <button type="button" class="btn-whatsapp" onclick="submitInquiry('whatsapp')"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main> <!-- end container -->
+
+  <!-- CONTACT & FOOTER (blue background) -->
+  <a href="https://wa.me/256791961348" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+    WhatsApp
+  </a>
+
+  <div class="contact-wrap" id="contact">
+    <div class="container">
+      <div class="contact-flex">
+        <div class="contact-info">
+          <h4>let's connect</h4>
+          <p><i class="fas fa-envelope"></i> shafiqkavuma63@gmail.com</p>
+          <p><i class="fas fa-phone-alt"></i> +256 791961348 (also WhatsApp)</p>
+          <p><i class="fas fa-map-marker-alt"></i> KAMPALA,UG / remote worldwide</p>
+          <div style="margin-top: 30px;">
+            <div class="social-links">
+              <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-img">
+          <img src="images/image%207.png" alt="Shafiq collaborating">
+        </div>
+      </div>
+      <hr>
+      <div class="copyright">
+        <p>Â© 2026 Shafiq â€” programmer, designer & repair expert.</p>
+        <p><i class="fas fa-bolt" style="color:white;"></i> website design Â· graphics Â· apps Â· flashing Â· repair <i class="fas fa-bolt" style="color:white;"></i></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- dummy credit: all icons from flaticon (free for personal/commercial with attribution) but used as design elements. Images from unsplash. -->
+
+  <script>
+    function submitInquiry(target) {
+      var name = document.getElementById('inq-name').value.trim() || 'Guest';
+      var contact = document.getElementById('inq-contact').value.trim() || 'Not provided';
+      var message = document.getElementById('inq-message').value.trim() || 'Hi, I have an inquiry about your services.';
+      var emailSubject = encodeURIComponent('Website inquiry from ' + name);
+      var emailBody = encodeURIComponent('Name: ' + name + '\nContact: ' + contact + '\n\nMessage:\n' + message);
+      if (target === 'email') {
+        window.location.href = 'mailto:shafiqkavuma63@gmail.com?subject=' + emailSubject + '&body=' + emailBody;
+      } else {
+        var whatsappText = encodeURIComponent('Hi Shafiq, my name is ' + name + '. ' + message + ' Contact: ' + contact);
+        window.open('https://wa.me/256791961348?text=' + whatsappText, '_blank');
+      }
+    }
+  </script>
+</body>
+</html>
